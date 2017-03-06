@@ -15,8 +15,7 @@
 #
 class Party < ApplicationRecord
 
-  validates_length_of :host_name, :host_email, :venue, :location, :theme,
-    maximum: 255, too_long: "Input was too long."
+  validates_length_of :host_name, :host_email, :venue, :location, :theme, maximum: 255
 
     def numgsts
       read_attribute(:numgsts) || 0
