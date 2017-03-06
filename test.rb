@@ -4,8 +4,7 @@ class Meme
 
   def self.process_names guest_names
     gnames = []
-    guest_names.split(',').each do |g|
-      g.squeeze!(' ')
+    guest_names.squeeze(' ').split(',').each do |g|
       names=g.split(' ')
       gnames << "#{names[0]} #{names[1..-1].join('_')}"
     end

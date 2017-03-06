@@ -31,8 +31,7 @@ class Party < ApplicationRecord
     # clean "Harry S. Truman" guest name to "Harry S._Truman"
     # clean "Roger      Rabbit" guest name to "Roger Rabbit"
     gnames = []
-    guest_names.split(',').each do |g|
-      g.squeeze!(' ')
+    guest_names.squeeze(' ').split(',').each do |g|
       names=g.split(' ')
       gnames << "#{names[0]} #{names[1..-1].join('_')}"
     end
