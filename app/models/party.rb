@@ -20,18 +20,12 @@ class Party < ApplicationRecord
   validates_length_of :host_name, :host_email, :venue, :location, :theme, maximum: 255
   validates_presence_of :venue, :location, :message => "Where is the party?"
   validates :guest_names, :equal_to => number_of_guest_names, :message => "Missing guest name"
+  validates_presence_of :start_time, :when_its_over
+  validates :when_its_over, :greater_than => start_time, :message => "Party end time needs to be after the start time"
 
     def numgsts
       read_attribute(:numgsts) || 0
     end
-
-  validate :validations
-
-  def validations
-    if start_time > when_its_over
-      errors.add(:base,"Incorrect party time.")
-    end
-  end
 
   def after_save
     # clean "Harry S. Truman" guest name to "Harry S._Truman"
