@@ -25,6 +25,7 @@ class Party < ApplicationRecord
 
   def validations
     # ruby doesn't like us using when as column name for some reason
+    # Because when is a reserved keyword that is part of the "case" statement
     if self[:when]>when_its_over
       errors.add(:base,"Incorrect party time.")
     end
