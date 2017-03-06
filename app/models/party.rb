@@ -15,12 +15,12 @@
 #
 class Party < ApplicationRecord
 
+  validates_length_of :host_name, :host_email, :venue, :location, :theme,
+    maximum: 255, too_long: "Input was too long."
+
   validate :validations
 
   def validations
-    if host_name.length<255 || host_email.length<255 || venue.length<255 || location.size<255 || theme.size<255
-      errors.add(:base,"Input was too long.")
-    end
     # ruby doesn't like us using when as column name for some reason
     if self[:when]>when_its_over
       errors.add(:base,"Incorrect party time.")
