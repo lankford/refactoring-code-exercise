@@ -8,7 +8,7 @@ class Meme
       names=g.split(' ')
       gnames << "#{names.shift} #{names.join('_')}"
     end
-    guest_names = gnames
+    guest_names = gnames.join(',')
   end
 
 end
@@ -22,7 +22,7 @@ class TestMeme < Minitest::Test
 
   def test_check_the_names_are_what_they_are_supposed_to_be
     # Using test data from comment
-    assert_equal @processed_names.join(',') , "Harry S._Truman,Roger Rabbit"
+    assert_equal @processed_names , "Harry S._Truman,Roger Rabbit"
   end
 
 end
