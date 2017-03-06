@@ -6,7 +6,7 @@ class Meme
     gnames = []
     guest_names.squeeze(' ').split(',').each do |g|
       names=g.split(' ')
-      gnames << "#{names[0]} #{names[1..-1].join('_')}"
+      gnames << "#{names.shift} #{names.join('_')}"
     end
     guest_names = gnames
   end
