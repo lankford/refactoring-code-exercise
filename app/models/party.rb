@@ -15,6 +15,8 @@
 #
 class Party < ApplicationRecord
 
+  alias_attrib :when, :start_time # when conflicts with reserved ruby keyword
+
   validates_length_of :host_name, :host_email, :venue, :location, :theme, maximum: 255
 
     def numgsts
@@ -24,9 +26,7 @@ class Party < ApplicationRecord
   validate :validations
 
   def validations
-    # ruby doesn't like us using when as column name for some reason
-    # Because when is a reserved keyword that is part of the "case" statement
-    if self[:when]>when_its_over
+    if start_time > when_its_over
       errors.add(:base,"Incorrect party time.")
     end
     if venue.length > 0 && location.length < 0
