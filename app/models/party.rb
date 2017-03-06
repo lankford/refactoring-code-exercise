@@ -19,6 +19,7 @@ class Party < ApplicationRecord
 
   validates_length_of :host_name, :host_email, :venue, :location, :theme, maximum: 255
   validates_presence_of :venue, :location, :message => "Where is the party?"
+  validates :guest_names, :equal_to => number_of_guest_names, :message => "Missing guest name"
 
     def numgsts
       read_attribute(:numgsts) || 0
@@ -29,9 +30,6 @@ class Party < ApplicationRecord
   def validations
     if start_time > when_its_over
       errors.add(:base,"Incorrect party time.")
-    end
-    if number_of_guest_names != numgsts
-      errors.add(:guest_names,"Missing guest name")
     end
   end
 
