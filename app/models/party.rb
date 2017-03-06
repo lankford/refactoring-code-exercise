@@ -31,7 +31,7 @@ class Party < ApplicationRecord
     if venue.length > 0 && location.length < 0
       errors.add(:location,"Where is the party?")
     end
-    if number_of_guests != numgsts
+    if number_of_guest_names != numgsts
       errors.add(:guest_names,"Missing guest name")
     end
   end
@@ -49,7 +49,7 @@ class Party < ApplicationRecord
     save!
   end
 
-  def number_of_guests
+  def number_of_guest_names
     guest_names.split(',').size
   end
 
