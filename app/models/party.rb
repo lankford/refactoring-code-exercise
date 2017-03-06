@@ -29,7 +29,7 @@ class Party < ApplicationRecord
     if start_time > when_its_over
       errors.add(:base,"Incorrect party time.")
     end
-    if venue.length > 0 && location.length < 0
+    if venue.length > 0 && ! location.length > 0
       errors.add(:location,"Where is the party?")
     end
     if number_of_guest_names != numgsts
