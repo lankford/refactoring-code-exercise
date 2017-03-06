@@ -35,7 +35,7 @@ class Party < ApplicationRecord
       names=g.split(' ')
       gnames << "#{names.shift} #{names.join('_')}"
     end
-    guest_names = gnames
+    guest_names = gnames.join(',')
     save!
   end
 
