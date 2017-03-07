@@ -2,7 +2,7 @@ class PartiesController < ApplicationController
 
   def index
     sort_field = params[:sort] || 'when'
-    sort_order = (params[:asc].blank? || params[:asc] == 'true') ? 'DESC' : 'ASC'
+    sort_order = (params[:asc] == 'false') ? 'ASC' : 'DESC'
     @parties = Party.order("#{sort_field} #{sort_order}").all
   end
 
