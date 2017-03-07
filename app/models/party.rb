@@ -23,7 +23,11 @@ class Party < ApplicationRecord
   validates_presence_of :start_time, :when_its_over
   validates :when_its_over, :greater_than => start_time, :message => "Party end time needs to be after the start time"
 
-  before_save :format_guest_names
+  before_save :format_guest_names , :set_party_finished_time
+
+  def set_party_finished_time
+    when_its_over = start_time.end_of_day if when_its_over.blank?
+  end
 
   def numgsts
     read_attribute(:numgsts) || 0

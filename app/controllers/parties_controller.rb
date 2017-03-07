@@ -1,4 +1,5 @@
 class PartiesController < ApplicationController
+
   def index
     @parties = Array.new
 
@@ -18,21 +19,15 @@ class PartiesController < ApplicationController
   end
 
   def create
-    @party = Party.new
-
-    @party.attributes = params[:party]
+    @party = Party.new(params[:party])
 
     if @party.save
-      # if end is blank, set to end of day
-      if @party.when_its_over.blank?
-        @party.when_its_over=@party.when.end_of_day
-        @party.save
-      end
-      @party.after_save
       redirect_to parties_url
     else
       flash[:notice]="Party was incorrect."
       redirect_to new_party_url
     end
+
   end
+
 end
