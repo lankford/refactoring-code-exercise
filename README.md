@@ -2,6 +2,8 @@
 
 If you go through the [Commits](https://github.com/lankford/refactoring-code-exercise/commits/master) , you will see that I have made most of the changes in the smallest "mental leap" as possible for most changes.
 
+I expect some typos to exist in this code as no test suite existed and the code was not "executable". Where code was executable, the Ruby IRB was used to build the statements.
+
 For the more complex bits, I created a Minitest file and made changes to it before moving them over to the "production code". Once the code was complete and the file no longer serving a purpose, it was removed.
 
 Many of the changes consisted of turning non-rails validations into more conforming versions.
