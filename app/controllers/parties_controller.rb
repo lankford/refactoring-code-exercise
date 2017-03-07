@@ -19,9 +19,6 @@ class PartiesController < ApplicationController
 
   def create
     @party = Party.new
-    if params[:party][:numgsts].blank?
-      params[:party][:numgsts]=0
-    end
 
     @party.attributes = params[:party]
 
