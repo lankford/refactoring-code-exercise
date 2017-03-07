@@ -23,24 +23,23 @@ class Party < ApplicationRecord
   validates_presence_of :start_time, :when_its_over
   validates :when_its_over, :greater_than => start_time, :message => "Party end time needs to be after the start time"
 
-    def numgsts
-      read_attribute(:numgsts) || 0
-    end
+  before_save :format_guest_names
 
-  def after_save
-    # clean "Harry S. Truman" guest name to "Harry S._Truman"
-    # clean "Roger      Rabbit" guest name to "Roger Rabbit"
-    gnames = []
-    guest_names.squeeze(' ').split(',').each do |g|
-      names=g.split(' ')
-      gnames << "#{names.shift} #{names.join('_')}"
-    end
-    guest_names = gnames.join(',')
-    save!
+  def numgsts
+    read_attribute(:numgsts) || 0
   end
 
   def number_of_guest_names
     guest_names.split(',').size
+  end
+
+  def format_guest_names
+    # this is a bit of tricky code that uses the non-greedy nature of .sub
+    # in order to pruduce a very odd requirement of secondary spaces be
+    # replaced with an underscore
+    self.guest_names = guest_names.squeeze(' ').split(',').each do |name|
+      name.gsub!(/ /,'_').sub!(/_/,' ')
+    end.join(',')
   end
 
 end
