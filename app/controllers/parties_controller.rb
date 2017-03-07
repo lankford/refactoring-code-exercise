@@ -15,8 +15,6 @@ class PartiesController < ApplicationController
 
   def new
     @party = Party.new
-    # so the view shows 0 and not blank
-    @party.numgsts
   end
 
   def create
