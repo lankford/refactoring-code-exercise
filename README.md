@@ -1,12 +1,15 @@
-# Do not submit pull requests to this repo!
-Pull requests are public which means other candidates can see your changes and potentially copy them as their own and submit them with their application.  You should submit your work as a zip file through your supplier/recruiter.  They will send it through the proper channels to get to RFA for review.
+# About this refactor by Matt Lankford
 
-Please do not contact the users of this organization directly.  South Carolina government requires certain procedures occur when hiring contractors.  The only response you will receive from any user in this organization will be to contact your supplier/recruiter.
+If you go through the [Commits](https://github.com/lankford/refactoring-code-exercise/commits/master) , you will see that I have made most of the changes in the smallest "mental leap" as possible for most changes.
 
-Thank you for your understanding.
+For the more complex bits, I created a Minitest file and made changes to it before moving them over to the "production code". Once the code was complete and the file no longer serving a purpose, it was removed.
 
+Many of the changes consisted of turning non-rails validations into more conforming versions.
 
-# RFA Code Exercise
+Some bugs were discovered along the way as well and are documented in the commit history.
+
+# Assumptions Given
+
 This exercise involves improving a fictional subset of a Ruby on Rails 5.x application.  It only contains a model, controller, and two views.
 
 You should assume the technology stack used for this code includes:
