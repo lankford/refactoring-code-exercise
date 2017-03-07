@@ -18,11 +18,7 @@
 <%- @parties.each do |party| %>
   <tr>
     <td>
-      <%- if party.host_name.blank? %>
-        No host was found
-      <%- else %>
-        <%= party.host_name %>
-      <%- end %>
+      <%= party.host_name  || "No host was found" %>
     </td>
     <td>
       <%= party.host_email %>
