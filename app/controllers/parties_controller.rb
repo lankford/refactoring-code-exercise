@@ -1,17 +1,9 @@
 class PartiesController < ApplicationController
 
   def index
-    @parties = Array.new
-
-    if !params[:sort].blank?
-      order = "#{params[:sort]} #{(params[:asc].blank? || params[:asc] == 'true') ? 'DESC' : 'ASC'}"
-      Party.order(order).all.each do |party|
-        @parties << party
-      end
-    else
-      order = "when #{(params[:asc].blank? || params[:asc] == 'true') ? 'DESC' : 'ASC'}"
-      @parties = Party.order(order).all
-    end
+    sort_field = params[:sort] || 'when'
+    sort_order = (params[:asc].blank? || params[:asc] == 'true') ? 'DESC' : 'ASC'
+    @parties = Party.order("#{sort_field} #{sort_order}").all
   end
 
   def new
