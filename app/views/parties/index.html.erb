@@ -29,11 +29,21 @@
     <td>
       <%= party.guest_names %>
     </td>
-    <td><%= party.venue %></td>
-    <td><%= party.location %></td>
-    <td class="time"><%= party[:when] %></td>
-    <td class="time"><%= party[:when_its_over] %></td>
-    <td><%= party.descript %></td>
+    <td>
+      <%= party.venue %>
+    </td>
+    <td>
+      <%= party.location %>
+    </td>
+    <td class="time">
+      <%= party[:when] %>
+    </td>
+    <td class="time">
+      <%= party[:when_its_over] %>
+    </td>
+    <td>
+      <%= party.descript %>
+    </td>
   </tr>
 <%- end %>
 </table>
